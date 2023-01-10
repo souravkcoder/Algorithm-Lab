@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int prims_algo(int n,vector<vector<int>>adj[] )
+int prims_algo(int v,vector<vector<int>>adj[] )
 {
     priority_queue<pair<int,int>,vector<pair<int,int>>, greater<pair<int,int>>> pq;
-    vector<int>vis(n,0);
+    vector<int>vis(v,0);
 
     pq.push({0,0});
     int sum=0;

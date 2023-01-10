@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int>dijkstra_algo(int n, vector<vector<int>>adj[],int s){
+vector<int>dijkstra_algo(int v, vector<vector<int>>adj[],int s){
      priority_queue<pair<int,int>,vector<pair<int,int>>, greater<pair<int,int>>> pq;
-     vector<int>dist(n);
-     for(int i=0;i<n;i++){
+     vector<int>dist(v);
+     for(int i=0;i<v;i++){
         dist[i]=2e9;
      }
      dist[s]=0;
