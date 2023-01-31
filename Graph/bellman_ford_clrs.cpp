@@ -2,19 +2,20 @@
 using namespace std;
 
 void initialize_single_source(int v,vector<vector<int>>&vertex,int s){
-
+    //sob vertex er distance part a infinite r parent a -1 rakhlam
     for(int i=1;i<=v;i++){
         vector<int>temp(2);
         temp[0]=INT_MAX; //distance
-        temp[1]=-1;         //parent
-        vertex[i]=temp;
+        temp[1]=-1;       //parent
+        vertex[i]=temp;     //i tomo vertex a rekhe dilam
     }
-    vertex[s][0]=0;
+    vertex[s][0]=0; //source to source distance zero
 
 }
 
 void relax(vector<vector<int>>&vertex,int u,int v,int w){
-    if(vertex[u][0]!=INT_MAX && (vertex[v][0]>(vertex[u][0]+w))){
+    if(vertex[u][0]!=INT_MAX && (vertex[v][0]>(vertex[u][0]+w))) //vertex[u][0] te infinte chilo, er sathe kichu jog korle ta int a rakha jabe na, tai int_max jokhon thakbe na tokhon tulona korchi [vertex[u][0]!=INT_MAX]-ei line use kore
+    {
         vertex[v][0]=vertex[u][0]+w;
         vertex[v][1]=u;
     }
@@ -36,7 +37,7 @@ bool bellman_ford(int v,vector<vector<int>>&vertex, vector<vector<int>>&edges,in
             }
     }
 
-
+//Negative cycle ache kina check korchi
     for(auto it:edges){
         int u=it[0];
         int v=it[1];
@@ -55,7 +56,7 @@ int main() {
     int n,m;
     cin>>n>>m;
     vector<vector<int>>vertex(n+1);
-    vector<vector<int>>edges;
+    vector<vector<int>>edges; //edge store korchi
     for(int i=0; i<m; i++)
     {
         int u,v,wt;
