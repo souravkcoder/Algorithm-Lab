@@ -5,32 +5,31 @@ vector<vector<int>> prims_algo(int v,vector<vector<int>>adj[],int s )
 {
 
     vector<vector<int>>vertex(v+1);
+
     for(int i=1; i<=v; i++)
     {
-         vertex[i][0]=INT_MAX;
-         vertex[i][1]=-1;
-         vertex[i][2]=i;
-
+        vector<int>temp(3);
+        temp[0]=INT_MAX;
+         temp[1]=-1;
+          temp[2]=i;
+        vertex[i]=temp;      //vertex
     }
-
+ cout<<"ok";
     vertex[s][0]=0;
     priority_queue<vector<int>,vector<vector<int>>, greater<vector<int>>> pq;
 
-    for(int i=1; i<=v; i++)
-    {
-        pq.push({vertex[i][0],vertex[i][1],vertex[i][2]});
-    }
 
-    // pq.push({vertex[s][0],vertex[s][1],vertex[s][2]});
+
+     pq.push({vertex[s][0],vertex[s][1],vertex[s][2]});
 
     vector<int>vis(v+1,0);
     while(!pq.empty())
     {
         auto itt=pq.top();
         pq.pop();
-        int node=itt[2];
         int key=itt[0];
         int pred=itt[1];
+        int node=itt[2];
         vis[node]=1;
         for(auto it: adj[node])
         {
