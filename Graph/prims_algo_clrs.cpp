@@ -7,11 +7,10 @@ vector<vector<int>> prims_algo(int v,vector<vector<int>>adj[],int s )
     vector<vector<int>>vertex(v+1);
     for(int i=1; i<=v; i++)
     {
-        vector<int>temp(3);
-        temp[0]=INT_MAX;
-        temp[1]=-1;
-        temp[2]=i;
-        vertex[i]=temp;
+         vertex[i][0]=INT_MAX;
+         vertex[i][1]=-1;
+         vertex[i][2]=i;
+
     }
 
     vertex[s][0]=0;
@@ -25,7 +24,6 @@ vector<vector<int>> prims_algo(int v,vector<vector<int>>adj[],int s )
     // pq.push({vertex[s][0],vertex[s][1],vertex[s][2]});
 
     vector<int>vis(v+1,0);
-
     while(!pq.empty())
     {
         auto itt=pq.top();
@@ -36,13 +34,13 @@ vector<vector<int>> prims_algo(int v,vector<vector<int>>adj[],int s )
         vis[node]=1;
         for(auto it: adj[node])
         {
-            int adjNode=it[0];
-            int adjNodeWeight=it[1];
-            if(vis[adjNode]==0 && adjNodeWeight<vertex[adjNode][0])
+            int v=it[0];
+            int w=it[1];
+            if(vis[v]==0 && w<vertex[v][0])
             {
-                vertex[adjNode][0]=adjNodeWeight;
-                vertex[adjNode][1]=node;
-                pq.push({vertex[adjNode][0],vertex[adjNode][1],vertex[adjNode][2]});
+                vertex[v][0]=w;
+                vertex[v][1]=node;
+                pq.push({vertex[v][0],vertex[v][1],vertex[v][2]});
             }
         }
     }

@@ -37,7 +37,7 @@ vector<vector<int>>dfs_traversal(int n,vector<int>adj[]){
         vertex[i]=temp;
     }
 
-    for(int i=n;i>=1;i--){
+    for(int i=1;i<=n;i++){
         if(vertex[i][0]==0){
             dfs_visit(vertex,adj,i);
         }

@@ -25,7 +25,6 @@ bool bellman_ford(int v,vector<vector<int>>&vertex, vector<vector<int>>&edges,in
 
     initialize_single_source(v,vertex,s);
 
-
     for(int i=1; i<=(v-1);i++){
 
             for(auto it : edges){
@@ -70,9 +69,13 @@ int main() {
     int source=1;
     bool ans=bellman_ford(n,vertex,edges,source);
     cout<<ans<<endl;
-    for(int i=1;i<=n;i++){
+    if(ans){
+        for(int i=1;i<=n;i++){
         cout<<vertex[i][0]<<" "<<vertex[i][1]<<endl;
     }
+    }
+    else cout<<"Negative Cycle Exist.";
+
 
 
 

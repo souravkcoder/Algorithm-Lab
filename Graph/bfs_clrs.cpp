@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<vector<int>> bfs_traversal(int n, vector<int>adj[],int s ){
+vector<vector<int>>bfs_traversal(int n, vector<int>adj[],int s ){
 
     vector<vector<int>>vertex(n+1);
     for(int i=1; i<=n; i++)
     {
         vector<int>temp(4);
-        temp[0]=0;          //color
+        temp[0]=0;          //color 0-white, 1-gray , 2-black
         temp[1]=INT_MAX;    //distance
         temp[2]=-1;         //parent
         temp[3]=i;          //vertex
@@ -40,7 +40,7 @@ vector<vector<int>> bfs_traversal(int n, vector<int>adj[],int s ){
 
 int main() {
 
- int n,m;
+        int n,m;
         cin>>n>>m;
         vector<int>adj[n+1];
         for(int i=0; i<m; i++)
